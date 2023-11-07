@@ -24,7 +24,6 @@ const listaPreciosCargoVenta = () => {
 const listaPreciosEnvio = () => {
     const elements = document.getElementsByClassName("sc-list-actionable-cell sc-list-actionable-cell__shipping")
     const precios = Array.from(elements).map(element => elCompradorPagaElEnvio(element) ? "$ 0" : element.childNodes[1].children[0].innerText.substring(6, 13))
-    console.log(precios)
     return precios
 }
 
@@ -57,14 +56,9 @@ const agregarPrecios = (publicacion, index) => {
 const agregarPreciosAPublicaciones = () => {
     const publicaciones = listaPublicaciones()
     Array.from(publicaciones).forEach((publicacion, index) => agregarPrecios(publicacion, index) )
-    console.log("Precios modificados")
-    console.log(publicaciones)
 }
 
-const TIEMPO_ESPERA = 1000
-
-//setTimeout(() => {console.clear(); agregarPreciosAPublicaciones()}, TIEMPO_ESPERA)
+const TIEMPO_ESPERA = 3000
 setTimeout(() => {console.clear(); agregarPreciosAPublicaciones()}, TIEMPO_ESPERA)
-
 
 
