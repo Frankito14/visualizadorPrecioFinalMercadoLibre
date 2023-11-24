@@ -21,6 +21,7 @@
 
     {
         "js": ["preciosMercadoLibre.js"],
+        "css": ["styles.css"],
         "matches": ["https://www.mercadolibre.com.ar/publicaciones/*"]
     }
   ]
