@@ -16,8 +16,10 @@ const listaPublicaciones = () => {
 const listaPreciosCargoVenta = () => {
     //Retorna una lista con los precios de cargo de venta de todas las publicaciones
     //Lista
-    const elements = document.getElementsByClassName("pricing-management-table__title")
-    const precios = Array.from(elements).map(element => precio(element.childNodes[1].innerText))
+    const elements = document.getElementsByClassName("sc-list-actionable-cell__description")
+    let precios = Array.from(elements).map(element => element.innerText)
+    precios = precios.filter(string => string.includes('cargo por venta total'))
+    precios = precios.map(string => precio(string))
     return precios
 }
 
@@ -65,7 +67,7 @@ const agregarPreciosAPublicaciones = () => {
 const precio = (string) =>{
     //Recibe un string con un precio y retorna el precio 
     //Numero
-    // "Pagás $ 1.822,99 de cargo por venta tota" -> 822
+    // "Pagás $ 1.822,99 de cargo por venta total" -> 822
     const regex = /\d+(?:\.\d+)?/g
     const match = string.match(regex);  //[1.822, 99]
     match[0] = match[0].replace(".", "") //[1822, 99]
